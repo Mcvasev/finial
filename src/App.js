@@ -1,25 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Task from './components/Task';
+import './index.css';
+import Taskinput from './components/Taskinput';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      tasks: [
+      { id: 0, title: "Создать органайзер", done: true},
+      { id: 1, title: "Создать органайзер1", done: false},
+      { id: 2, title: "Создать органайзер2", done: false},
+      { id: 3, title: "Создать органайзер3", done: true},
+      { id: 4, title: "Создать органайзер4", done: false},
+      { id: 5, title: "Создать органайзер5", done: false}
+    ]
+    }
+  } 
+
+  doneTasks = id => {
+    const index = this.state.tasks.map(task => task.id).index(id);
+    this.setState(state => {
+      let { tasks } = state;
+      tasks[index].done = true;
+      return tasks;
+    });
+   }
+  deleteTask = id => {
+    const index = this.state.tasks.map(task => task.id).indexOf(id);
+    this.setState(state => {
+      let { tasks } = state;
+      delete tasks[index];
+      return tasks;
+    });
+  }  
+    
+  addTask = task => {
+    this.setState(state => {
+      let { tasks } = state;
+      tasks.push({
+        id: tasks.length !==0 ? task.length : 0,
+        title: task,
+        done: false 
+      })
+    })
+  }
+
+  render() {
+
+    const { tasks} = this.state;
+    const activeTasks = tasks.filter(task => !task.done);
+    const doneTasks = tasks.filter(task => task.done)
+
+    return <div className="App">
+      <div className="YellowLine"></div>
+      <h1 className="todo">To-Do List</h1>
+      <p className="tasks">Активных задач: {activeTasks.length}</p>
+      <div className="tasklist">{[...activeTasks, ...doneTasks].map(task => (
+        <Task 
+        doneTasks={()=> this.doneTask(task.id)}
+        deleteTask={()=> this.deleteTask(task.id)}
+        task={task} 
+        key={task.id}>
+
+        </Task>
+      ))}
+      </div>
+      <Taskinput addTask={this.addTask}></Taskinput>
+      </div>;
+  }
 }
 
 export default App;
