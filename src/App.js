@@ -12,8 +12,7 @@ class App extends React.Component {
       { id: 1, title: "Создать органайзер1", done: false},
       { id: 2, title: "Создать органайзер2", done: false},
       { id: 3, title: "Создать органайзер3", done: true},
-      { id: 4, title: "Создать органайзер4", done: false},
-      { id: 5, title: "Создать органайзер5", done: false}
+      { id: 4, title: "Создать органайзер4", done: false}
     ]
     }
   } 
@@ -42,8 +41,9 @@ class App extends React.Component {
         id: tasks.length !==0 ? task.length : 0,
         title: task,
         done: false 
-      })
-    })
+      });
+      return tasks;
+    });
   }
 
   render() {
