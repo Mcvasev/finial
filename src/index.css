@@ -14,10 +14,10 @@ code {
     monospace;
 }
 
-* {
+/* * {
   transition: 0.3s all;
   user-select: none;
-}
+} */
 
 /* :root {
   --text: white;
@@ -43,19 +43,72 @@ code {
   margin-bottom: 10px;
 }
 
+.task:hover {
+  background: #c2bfbf30;
+}
+
+.task-input {
+  display: block;
+  flex-direction: column;
+}
+
 .YellowLine {
   background-color: yellow;
   height: 34px;
   border-radius: 10px 10px 0 0 ;
 }
 
-.btnAdd {
+/* .btnAdd {
   margin-bottom: 20px;
-}
+} */
 
 .tasklist {
   border:  1px solid black;
   border-radius: 5px;
   /* margin: 0 20px;
   width: 300px; */
+}
+
+.grayB {
+  width: 25px;
+  height: 15px;
+  background: url(pic/Group74.svg);
+  border: none;
+  /* align-self: flex-end; */
+  display: flex;
+  /* flex-direction: row-reverse; */
+  justify-content: flex-end;
+  margin: 0 40px 9px 0;
+}
+
+.grayB:hover {
+  background: url(pic/BlackGroup.svg);   
+}
+.grayBsort {
+  width: 25px;
+  height: 15px;
+  background: url(pic/GroupUpGray.svg);
+  border: none;
+  /* align-self: flex-end; */
+  display: flex;
+  margin: 0 40px 9px 0;
+}
+.grayBsort:hover {
+  background: url(pic/BlackGroupUP.svg);
+}
+
+.knopkaAdd {
+  font: white;
+  font-weight: 500;
+  width: 130px;
+  height: 38px;
+  background-color: #833AE0;
+  border-radius: 71px;
+  align-self: center;
+  text-align: center;
+  display: flex;
+  outline: none;
+  margin: 0 93px 19px 93px;
+  border: none;
+  padding: 0 0 15px 0;
 }

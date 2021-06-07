@@ -8,10 +8,10 @@ class App extends React.Component {
     super();
     this.state = {
       tasks: [
-      { id: 0, title: "Создать органайзер", done: true},
+      // { id: 0, title: "Создать органайзер", done: true},
       { id: 1, title: "Создать органайзер1", done: false},
       { id: 2, title: "Создать органайзер2", done: false},
-      { id: 3, title: "Создать органайзер3", done: true},
+      // { id: 3, title: "Создать органайзер3", done: true},
       { id: 4, title: "Создать органайзер4", done: false}
     ]
     }
@@ -46,6 +46,15 @@ class App extends React.Component {
     });
   }
 
+  sortTask = task => {
+    this.setState(state => {
+      let { tasks } = state;
+      tasks.sort((a, b) => a.title > b.title ? 1 : -1);
+      console.log(tasks)
+      return tasks;
+    })
+  }
+
   render() {
 
     const { tasks} = this.state;
@@ -56,6 +65,7 @@ class App extends React.Component {
       <div className="YellowLine"></div>
       <h1 className="todo">To-Do List</h1>
       <p className="tasks">Активных задач: {activeTasks.length}</p>
+      <button className="grayB" onClick={this.sortTask}> </button>
       <div className="tasklist">{[...activeTasks, ...doneTasks].map(task => (
         <Task 
         doneTasks={()=> this.doneTask(task.id)}
