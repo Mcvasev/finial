@@ -38,7 +38,7 @@ class App extends React.Component {
     this.setState(state => {
       let { tasks } = state;
       tasks.push({
-        id: tasks.length !==0 ? task.length : 0,
+        id: tasks.length !==0 ? task.length + 1 : 0,
         title: task,
         done: false 
       });
